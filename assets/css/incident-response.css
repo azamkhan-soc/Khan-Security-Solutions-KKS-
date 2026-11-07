@@ -1,0 +1,72 @@
+/* ==========================================================================
+   KHAN SECURITY SOLUTIONS ENTERPRISE
+   Enterprise Incident Response Center — Styles v1.1.0
+   Reuses shared .ai-* structural classes from asset-inventory.css
+   (drawer, modal, table, pagination, filter bar, detail grid) for a
+   consistent enterprise look, plus ir-* classes for IR-specific pieces.
+   Uses only CSS variables from variables.css — zero hardcoded colors.
+   ========================================================================== */
+
+#page-incident-response { padding: 0 !important; }
+
+.ir-shell { display: flex; flex-direction: column; min-height: calc(100vh - var(--topbar-height)); background: var(--bg-base); }
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.ir-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: var(--space-4); flex-wrap: wrap; flex-shrink: 0;
+}
+.ir-header-title { font-size: var(--text-lg); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.ir-header-sub { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 2px; }
+.ir-header-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+.ir-body { flex: 1; padding: var(--space-6); }
+.ir-inline-icon { width: 14px; height: 14px; display: inline-block; vertical-align: -2px; margin-right: 4px; color: var(--text-tertiary); }
+
+/* ── Stat cards (11 cards — wraps generously) ───────────────────────────── */
+.ir-stats { grid-template-columns: repeat(6, 1fr); }
+@media (max-width: 1400px) { .ir-stats { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 900px) { .ir-stats { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── Charts ──────────────────────────────────────────────────────────────── */
+.ir-charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); margin-top: var(--space-5); }
+
+/* ── Timeline (drawer tab) ───────────────────────────────────────────────── */
+.ir-timeline-track { display: flex; flex-direction: column; }
+
+/* ── Evidence ────────────────────────────────────────────────────────────── */
+.ir-evidence-item { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); margin-bottom: var(--space-2); }
+.ir-evidence-name { font-size: var(--text-sm); color: var(--text-primary); font-weight: var(--weight-medium); }
+.ir-evidence-note { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 2px; line-height: 1.5; }
+
+/* ── Tasks ───────────────────────────────────────────────────────────────── */
+.ir-task-item { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); margin-bottom: var(--space-2); }
+.ir-task-item input[type=checkbox] { margin-top: 3px; accent-color: var(--color-primary); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
+.ir-task-title { font-size: var(--text-sm); color: var(--text-primary); font-weight: var(--weight-medium); }
+.ir-task-meta { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.ir-task-progress-track { height: 5px; background: var(--bg-overlay); border-radius: 3px; margin-top: var(--space-2); overflow: hidden; }
+.ir-task-progress-fill { height: 100%; background: var(--color-primary); border-radius: 3px; transition: width var(--duration-slow); }
+
+/* ── Recovery checklist ──────────────────────────────────────────────────── */
+.ir-recovery-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) 0; font-size: var(--text-sm); color: var(--text-secondary); }
+.ir-recovery-check {
+  width: 20px; height: 20px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border-default); display: flex; align-items: center; justify-content: center;
+  color: var(--color-success); flex-shrink: 0;
+}
+.ir-recovery-check.done { background: var(--color-success-bg); border-color: var(--color-success); }
+.ir-recovery-check svg { width: 12px; height: 12px; }
+
+/* ── Print ───────────────────────────────────────────────────────────────── */
+@media print {
+  .ir-header, .ai-filter-card, .ai-pagination, .btn, .ai-drawer-overlay, .ai-modal-overlay { display: none !important; }
+  #page-incident-response { padding: 0 !important; }
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .ir-task-item, .ir-evidence-item { flex-direction: column; }
+}

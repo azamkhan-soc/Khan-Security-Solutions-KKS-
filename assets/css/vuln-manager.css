@@ -1,0 +1,160 @@
+/* ==========================================================================
+   KHAN SECURITY SOLUTIONS ENTERPRISE
+   Vulnerability Manager — Styles v0.9.0
+   Uses only CSS variables from variables.css — zero hardcoded colors.
+   ========================================================================== */
+
+#page-vuln-manager { padding: 0 !important; }
+
+.vm-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--topbar-height));
+  background: var(--bg-base);
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.vm-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: var(--space-4); flex-wrap: wrap; flex-shrink: 0;
+}
+.vm-header-left { display: flex; align-items: center; gap: var(--space-4); }
+.vm-header-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-lg);
+  background: rgba(239,68,68,0.15); color: var(--color-danger);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.vm-header-icon svg { width: 20px; height: 20px; }
+.vm-header-title { font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.vm-header-sub { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 2px; }
+
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+.vm-tabs {
+  display: flex; background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow-x: auto; scrollbar-width: none; flex-shrink: 0;
+}
+.vm-tabs::-webkit-scrollbar { display: none; }
+.vm-tab {
+  display: flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm); font-weight: var(--weight-medium);
+  color: var(--text-secondary); cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid transparent; transition: all var(--duration-fast);
+}
+.vm-tab:hover { color: var(--text-primary); background: var(--bg-hover); }
+.vm-tab.active { color: var(--color-primary-light); border-bottom-color: var(--color-primary); }
+.vm-tab svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* ── Body / Views ────────────────────────────────────────────────────────── */
+.vm-body { flex: 1; padding: var(--space-6); }
+.vm-view { display: none; }
+.vm-view.active { display: block; }
+.vm-inline-icon { width: 14px; height: 14px; display: inline-block; vertical-align: -2px; margin-right: 4px; color: var(--text-tertiary); }
+.vm-row { cursor: pointer; }
+
+/* ── Toolbar ─────────────────────────────────────────────────────────────── */
+.vm-toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+
+/* ── Severity bars ───────────────────────────────────────────────────────── */
+.vm-sev-row { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2); }
+.vm-sev-label { width: 80px; font-size: var(--text-xs); color: var(--text-secondary); text-transform: capitalize; }
+.vm-sev-track { flex: 1; height: 10px; background: var(--bg-elevated); border-radius: 5px; overflow: hidden; }
+.vm-sev-fill { height: 100%; border-radius: 5px; transition: width var(--duration-slow); }
+.vm-sev-count { width: 32px; text-align: right; font-size: var(--text-xs); color: var(--text-tertiary); font-family: var(--font-mono); }
+.vm-nist-desc { font-size: var(--text-xs); color: var(--text-tertiary); margin: 0 0 var(--space-4) 92px; line-height: 1.5; }
+
+/* ── Forms ───────────────────────────────────────────────────────────────── */
+.vm-form-row { margin-bottom: var(--space-4); }
+.vm-label { display: block; font-size: var(--text-xs); font-weight: var(--weight-medium); color: var(--text-secondary); margin-bottom: var(--space-2); }
+
+/* ── CVE detail ──────────────────────────────────────────────────────────── */
+.vm-cve-product { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-primary); margin-bottom: var(--space-2); }
+.vm-cve-summary { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6; }
+
+/* ── CVSS calculator ─────────────────────────────────────────────────────── */
+.vm-cvss-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-5); align-items: start; }
+@media (max-width: 1024px) { .vm-cvss-grid { grid-template-columns: 1fr; } }
+.vm-cvss-result-card { position: sticky; top: var(--space-4); }
+.vm-cvss-score { font-size: 56px; font-weight: var(--weight-bold); line-height: 1; text-align: center; font-family: var(--font-mono); }
+.vm-cvss-score-label { text-align: center; font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: 0.04em; margin-top: var(--space-2); margin-bottom: var(--space-4); }
+.vm-cvss-sub-scores { display: flex; flex-direction: column; gap: var(--space-2); border-top: 1px solid var(--border-subtle); padding-top: var(--space-3); }
+.vm-cvss-sub-scores div { display: flex; justify-content: space-between; font-size: var(--text-sm); }
+.vm-cvss-sub-scores span:first-child { color: var(--text-tertiary); }
+.vm-cvss-sub-scores span:last-child { color: var(--text-primary); }
+
+/* ── Risk matrix ─────────────────────────────────────────────────────────── */
+.vm-risk-matrix { display: flex; flex-direction: column; gap: var(--space-3); }
+.vm-matrix-grid {
+  display: grid;
+  grid-template-columns: 44px repeat(5, 1fr);
+  gap: 6px;
+  max-width: 620px;
+}
+.vm-matrix-corner { }
+.vm-matrix-axis-label {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--text-tertiary); font-family: var(--font-mono);
+}
+.vm-matrix-cell {
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: transform var(--duration-fast);
+}
+.vm-matrix-cell:hover { transform: scale(1.05); }
+.vm-matrix-cell-count { font-size: var(--text-sm); font-weight: var(--weight-bold); font-family: var(--font-mono); }
+.vm-matrix-legend { display: flex; gap: var(--space-6); font-size: var(--text-xs); color: var(--text-tertiary); }
+
+/* ── Detail overlay (shared pattern) ─────────────────────────────────────── */
+.vm-detail-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+  z-index: var(--z-modal); display: flex; align-items: flex-end; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity var(--duration-slow);
+}
+.vm-detail-overlay.open { opacity: 1; pointer-events: all; }
+.vm-detail-panel {
+  background: var(--bg-surface); border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  width: 100%; max-width: 680px; max-height: 82vh; overflow-y: auto;
+  transform: translateY(100%); transition: transform var(--duration-slow) var(--ease-out);
+  padding: var(--space-6);
+}
+.vm-detail-overlay.open .vm-detail-panel { transform: translateY(0); }
+.vm-detail-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-5); }
+.vm-detail-title { font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--text-primary); font-family: var(--font-mono); }
+.vm-detail-close {
+  width: 30px; height: 30px; border-radius: var(--radius-md);
+  background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-tertiary); transition: all var(--duration-fast);
+}
+.vm-detail-close:hover { background: var(--bg-overlay); color: var(--text-primary); }
+.vm-detail-close svg { width: 15px; height: 15px; }
+
+.vm-detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin: var(--space-3) 0 var(--space-4); }
+.vm-detail-field { background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-3); }
+.vm-detail-field-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-tertiary); margin-bottom: 4px; }
+.vm-detail-field-value { font-size: var(--text-sm); color: var(--text-primary); font-weight: var(--weight-medium); }
+.vm-detail-sub-title {
+  font-size: var(--text-xs); font-weight: var(--weight-semibold);
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-tertiary);
+  margin: var(--space-4) 0 var(--space-2);
+}
+
+/* ── Print ───────────────────────────────────────────────────────────────── */
+@media print {
+  .vm-header, .vm-tabs, .vm-toolbar, .btn, .vm-detail-overlay { display: none !important; }
+  #page-vuln-manager { padding: 0 !important; }
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .vm-detail-grid { grid-template-columns: 1fr; }
+  .vm-matrix-grid { grid-template-columns: 32px repeat(5, 1fr); }
+}

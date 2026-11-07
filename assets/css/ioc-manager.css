@@ -1,0 +1,38 @@
+/* ==========================================================================
+   KHAN SECURITY SOLUTIONS ENTERPRISE
+   Enterprise IOC Manager — Styles v1.3.0
+   Reuses shared .ai-* / .ir-* structural classes (drawer, modal, table,
+   pagination, filter bar, detail grid, charts grid) for a consistent
+   enterprise look, plus ioc-* classes for IOC-Manager-specific pieces.
+   Uses only CSS variables from variables.css — zero hardcoded colors.
+   ========================================================================== */
+
+#page-ioc-manager { padding: 0 !important; }
+
+.ioc-shell { display: flex; flex-direction: column; min-height: calc(100vh - var(--topbar-height)); background: var(--bg-base); }
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.ioc-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: var(--space-4); flex-wrap: wrap; flex-shrink: 0;
+}
+.ioc-header-title { font-size: var(--text-lg); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.ioc-header-sub { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 2px; }
+.ioc-header-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+.ioc-body { flex: 1; padding: var(--space-6); }
+.ioc-inline-icon { width: 14px; height: 14px; display: inline-block; vertical-align: -2px; margin-right: 4px; color: var(--text-tertiary); }
+
+/* ── Stat cards (12 cards) ───────────────────────────────────────────────── */
+.ioc-stats { grid-template-columns: repeat(6, 1fr); }
+@media (max-width: 1400px) { .ioc-stats { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 900px) { .ioc-stats { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── Print ───────────────────────────────────────────────────────────────── */
+@media print {
+  .ioc-header, .ai-filter-card, .ai-pagination, .btn, .ai-drawer-overlay, .ai-modal-overlay { display: none !important; }
+  #page-ioc-manager { padding: 0 !important; }
+}

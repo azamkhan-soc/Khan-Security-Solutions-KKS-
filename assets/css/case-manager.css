@@ -1,0 +1,85 @@
+/* ==========================================================================
+   KHAN SECURITY SOLUTIONS ENTERPRISE
+   Enterprise Security Case Manager — Styles v1.4.0
+   Reuses shared .ai-* / .ir-* structural classes (drawer, modal, table,
+   pagination, filter bar, detail grid, charts grid, evidence item) for a
+   consistent enterprise look, plus cm-* classes for case-manager specifics
+   including the Kanban task board.
+   Uses only CSS variables from variables.css — zero hardcoded colors.
+   ========================================================================== */
+
+#page-case-manager { padding: 0 !important; }
+
+.cm-shell { display: flex; flex-direction: column; min-height: calc(100vh - var(--topbar-height)); background: var(--bg-base); }
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.cm-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: var(--space-4); flex-wrap: wrap; flex-shrink: 0;
+}
+.cm-header-title { font-size: var(--text-lg); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.cm-header-sub { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 2px; }
+.cm-header-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+.cm-body { flex: 1; padding: var(--space-6); }
+.cm-inline-icon { width: 14px; height: 14px; display: inline-block; vertical-align: -2px; margin-right: 4px; color: var(--text-tertiary); }
+
+/* ── Stat cards (11 cards) ───────────────────────────────────────────────── */
+.cm-stats { grid-template-columns: repeat(6, 1fr); }
+@media (max-width: 1400px) { .cm-stats { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 900px) { .cm-stats { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── Kanban board (Tasks tab) ────────────────────────────────────────────── */
+.cm-kanban {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+@media (max-width: 900px) { .cm-kanban { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .cm-kanban { grid-template-columns: 1fr; } }
+
+.cm-kanban-col {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  min-height: 160px;
+}
+.cm-kanban-col-header {
+  font-size: var(--text-xs); font-weight: var(--weight-semibold);
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--text-tertiary);
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+.cm-kanban-count {
+  background: var(--bg-overlay); color: var(--text-secondary);
+  border-radius: var(--radius-full, 999px); padding: 1px 7px; font-size: 10px;
+}
+.cm-kanban-col-body { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.cm-task-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  transition: border-color var(--duration-fast);
+}
+.cm-task-card:hover { border-color: var(--border-strong); }
+.cm-task-title { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-primary); margin-bottom: var(--space-2); }
+.cm-task-meta { display: flex; align-items: center; gap: var(--space-2); font-size: 11px; color: var(--text-tertiary); margin-bottom: var(--space-2); }
+.cm-task-progress-track { height: 4px; background: var(--bg-overlay); border-radius: 2px; overflow: hidden; margin-bottom: var(--space-2); }
+.cm-task-progress-fill { height: 100%; background: var(--color-primary); border-radius: 2px; transition: width var(--duration-slow); }
+.cm-task-due { font-size: 10px; color: var(--text-tertiary); }
+
+/* ── Reports tab button row ──────────────────────────────────────────────── */
+.cm-report-btns { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+
+/* ── Print ───────────────────────────────────────────────────────────────── */
+@media print {
+  .cm-header, .ai-filter-card, .ai-pagination, .btn, .ai-drawer-overlay, .ai-modal-overlay { display: none !important; }
+  #page-case-manager { padding: 0 !important; }
+}

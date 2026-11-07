@@ -1,0 +1,164 @@
+/* ==========================================================================
+   KHAN SECURITY SOLUTIONS ENTERPRISE
+   Enterprise AI Security Assistant — Module Styles (aia- prefix)
+   ========================================================================== */
+
+.aia-shell { display: flex; flex-direction: column; gap: var(--space-5); height: 100%; }
+
+/* ── Header ── */
+.aia-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.aia-header-title { font-size: var(--text-2xl); font-weight: var(--weight-bold); color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+.aia-header-title svg { width: 22px; height: 22px; color: var(--color-primary-light); }
+.aia-header-sub { font-size: var(--text-sm); color: var(--text-tertiary); margin-top: 2px; }
+.aia-header-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+.aia-demo-badge {
+  display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: var(--weight-semibold);
+  padding: 2px 8px; border-radius: 999px; background: var(--color-warning-bg); color: var(--color-warning-light);
+  border: 1px solid rgba(245,158,11,.25); text-transform: uppercase; letter-spacing: .03em; white-space: nowrap;
+}
+
+/* ── Layout ── */
+.aia-layout { display: grid; grid-template-columns: 260px 1fr; gap: var(--space-4); flex: 1; min-height: 560px; }
+
+/* ── Sidebar ── */
+.aia-sidebar { display: flex; flex-direction: column; gap: var(--space-3); overflow-y: auto; }
+.aia-sidebar-search { padding: var(--space-3); }
+.aia-sidebar-search input { width: 100%; }
+.aia-sidebar-group { padding: var(--space-3); }
+.aia-sidebar-group-title { display: flex; align-items: center; justify-content: space-between; font-size: var(--text-xs); font-weight: var(--weight-semibold); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .04em; margin-bottom: var(--space-2); cursor: pointer; }
+.aia-sidebar-group-title svg { width: 12px; height: 12px; transition: transform var(--duration-base); }
+.aia-sidebar-group.collapsed .aia-sidebar-group-body { display: none; }
+.aia-sidebar-group.collapsed .aia-sidebar-group-title svg { transform: rotate(-90deg); }
+.aia-sidebar-group-body { display: flex; flex-direction: column; gap: 2px; }
+.aia-sidebar-empty { font-size: var(--text-xs); color: var(--text-tertiary); padding: var(--space-2) 0; }
+
+.aia-conv-item { display: flex; align-items: center; gap: 6px; padding: var(--space-2) var(--space-2); border-radius: var(--radius-md); cursor: pointer; font-size: var(--text-xs); color: var(--text-secondary); }
+.aia-conv-item:hover { background: var(--bg-hover); }
+.aia-conv-item.active { background: var(--bg-active); color: var(--color-primary-light); font-weight: var(--weight-semibold); }
+.aia-conv-title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.aia-conv-actions { display: none; gap: 3px; flex-shrink: 0; }
+.aia-conv-item:hover .aia-conv-actions { display: flex; }
+.aia-conv-actions svg { width: 12px; height: 12px; cursor: pointer; color: var(--text-tertiary); }
+.aia-conv-actions svg:hover { color: var(--text-primary); }
+.aia-pin-icon.pinned { color: var(--color-warning); }
+
+.aia-prompt-chip, .aia-recent-chip, .aia-fav-chip { padding: var(--space-2); border-radius: var(--radius-md); cursor: pointer; font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.4; }
+.aia-prompt-chip:hover, .aia-recent-chip:hover, .aia-fav-chip:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+/* ── Main chat panel ── */
+.aia-main { display: flex; flex-direction: column; overflow: hidden; }
+.aia-messages { flex: 1; overflow-y: auto; padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-4); }
+
+/* ── Welcome screen ── */
+.aia-welcome { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--space-6); gap: var(--space-4); flex: 1; }
+.aia-welcome-icon { width: 56px; height: 56px; border-radius: var(--radius-lg); background: var(--color-primary-glow); display: flex; align-items: center; justify-content: center; }
+.aia-welcome-icon svg { width: 28px; height: 28px; color: var(--color-primary-light); }
+.aia-welcome-title { font-size: var(--text-xl); font-weight: var(--weight-bold); color: var(--text-primary); }
+.aia-welcome-sub { font-size: var(--text-sm); color: var(--text-tertiary); max-width: 440px; }
+.aia-example-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-2); max-width: 680px; width: 100%; margin-top: var(--space-2); }
+.aia-example-chip { padding: var(--space-3) var(--space-4); border: 1px solid var(--border-default); border-radius: var(--radius-md); cursor: pointer; font-size: var(--text-sm); color: var(--text-secondary); text-align: left; transition: border-color var(--duration-base), background var(--duration-base); }
+.aia-example-chip:hover { border-color: var(--border-primary); background: var(--bg-hover); color: var(--text-primary); }
+
+/* ── Message bubbles ── */
+.aia-msg { display: flex; gap: var(--space-3); max-width: 780px; }
+.aia-msg.user { align-self: flex-end; flex-direction: row-reverse; }
+.aia-msg.assistant { align-self: flex-start; }
+.aia-msg-avatar { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.aia-msg.assistant .aia-msg-avatar { background: var(--color-primary-glow); color: var(--color-primary-light); }
+.aia-msg.user .aia-msg-avatar { background: var(--bg-overlay); color: var(--text-secondary); }
+.aia-msg-avatar svg { width: 16px; height: 16px; }
+.aia-msg-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.aia-msg.user .aia-msg-body { align-items: flex-end; }
+.aia-bubble { padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg); font-size: var(--text-sm); line-height: 1.65; color: var(--text-secondary); }
+.aia-msg.assistant .aia-bubble { background: var(--bg-glass); backdrop-filter: blur(14px); border: 1px solid var(--border-subtle); border-top-left-radius: 4px; }
+.aia-msg.user .aia-bubble { background: var(--color-primary); color: #fff; border-top-right-radius: 4px; }
+.aia-bubble p { margin: 0 0 8px; }
+.aia-bubble p:last-child { margin-bottom: 0; }
+.aia-bubble strong { color: var(--text-primary); font-weight: var(--weight-semibold); }
+.aia-msg.user .aia-bubble strong { color: #fff; }
+.aia-bubble code { background: var(--bg-overlay); padding: 1px 5px; border-radius: 4px; font-family: var(--font-mono); font-size: 12px; color: var(--color-accent-light); }
+.aia-code-block { background: var(--bg-overlay); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-3); font-family: var(--font-mono); font-size: 12px; color: var(--color-accent-light); overflow-x: auto; white-space: pre-wrap; margin: 8px 0; }
+.aia-list { margin: 4px 0 8px; padding-left: 20px; }
+.aia-list li { margin-bottom: 3px; }
+.aia-table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 12px; }
+.aia-table th, .aia-table td { border: 1px solid var(--border-subtle); padding: 6px 10px; text-align: left; }
+.aia-table th { background: var(--bg-overlay); color: var(--text-primary); font-weight: var(--weight-semibold); }
+
+.aia-msg-meta { display: flex; align-items: center; gap: 8px; font-size: 10px; color: var(--text-tertiary); }
+.aia-msg-actions { display: flex; gap: 6px; }
+.aia-msg-actions svg { width: 13px; height: 13px; cursor: pointer; color: var(--text-tertiary); transition: color var(--duration-base); }
+.aia-msg-actions svg:hover { color: var(--text-primary); }
+.aia-msg-actions svg.active { color: var(--color-warning); }
+
+/* ── Thinking / typing indicator ── */
+.aia-thinking { display: flex; align-items: center; gap: 6px; padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg); background: var(--bg-glass); border: 1px solid var(--border-subtle); width: fit-content; }
+.aia-thinking-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-tertiary); animation: aiBounce 1.2s infinite ease-in-out; }
+.aia-thinking-dot:nth-child(2) { animation-delay: .15s; }
+.aia-thinking-dot:nth-child(3) { animation-delay: .3s; }
+@keyframes aiBounce { 0%, 60%, 100% { transform: translateY(0); opacity: .4; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+/* ── Input bar ── */
+.aia-input-bar { border-top: 1px solid var(--border-subtle); padding: var(--space-4); }
+.aia-input-row { display: flex; gap: var(--space-2); align-items: flex-end; }
+.aia-input-row textarea {
+  flex: 1; resize: none; min-height: 44px; max-height: 140px; padding: var(--space-3) var(--space-4);
+  background: var(--bg-overlay); border: 1px solid var(--border-default); border-radius: var(--radius-lg);
+  color: var(--text-primary); font-size: var(--text-sm); font-family: var(--font-sans); line-height: 1.5;
+}
+.aia-input-row textarea:focus { outline: none; border-color: var(--color-primary); }
+.aia-send-btn { width: 44px; height: 44px; border-radius: var(--radius-lg); background: var(--color-primary); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: background var(--duration-base); }
+.aia-send-btn:hover { background: var(--color-primary-light); }
+.aia-send-btn svg { width: 18px; height: 18px; }
+.aia-input-hint { font-size: 11px; color: var(--text-tertiary); margin-top: 6px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+.aia-input-hint code { background: var(--bg-overlay); padding: 1px 5px; border-radius: 4px; font-family: var(--font-mono); }
+
+.aia-cmd-menu { position: absolute; bottom: 100%; left: var(--space-4); right: var(--space-4); margin-bottom: 6px; background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); max-height: 220px; overflow-y: auto; z-index: 20; }
+.aia-cmd-row { padding: var(--space-2) var(--space-3); display: flex; justify-content: space-between; gap: var(--space-3); font-size: var(--text-xs); cursor: pointer; }
+.aia-cmd-row:hover, .aia-cmd-row.active { background: var(--bg-hover); }
+.aia-cmd-row code { color: var(--color-primary-light); font-family: var(--font-mono); }
+.aia-cmd-row span { color: var(--text-tertiary); }
+.aia-input-bar { position: relative; }
+
+/* ── Modal content: Prompt Library / Knowledge Base / Export / Settings ── */
+.aia-modal-lg .modal { max-width: 720px; }
+.aia-kb-search { margin-bottom: var(--space-4); }
+.aia-kb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-3); max-height: 440px; overflow-y: auto; }
+.aia-kb-card { padding: var(--space-4); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; transition: border-color var(--duration-base); }
+.aia-kb-card:hover { border-color: var(--border-primary); }
+.aia-kb-icon { width: 32px; height: 32px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; background: var(--color-primary-glow); color: var(--color-primary-light); margin-bottom: var(--space-2); }
+.aia-kb-icon svg { width: 16px; height: 16px; }
+.aia-kb-title { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.aia-kb-cat { font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .03em; margin-bottom: 4px; }
+.aia-kb-summary { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 4px; line-height: 1.4; }
+.aia-kb-detail { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6; }
+.aia-kb-back { display: inline-flex; align-items: center; gap: 4px; font-size: var(--text-xs); color: var(--text-tertiary); cursor: pointer; margin-bottom: var(--space-3); }
+.aia-kb-back:hover { color: var(--text-secondary); }
+
+.aia-lib-group { margin-bottom: var(--space-4); }
+.aia-lib-group-title { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-primary); margin-bottom: var(--space-2); }
+.aia-lib-prompt { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); cursor: pointer; font-size: var(--text-sm); color: var(--text-secondary); }
+.aia-lib-prompt:hover { background: var(--bg-hover); color: var(--text-primary); }
+.aia-lib-prompt svg { width: 14px; height: 14px; color: var(--text-tertiary); cursor: pointer; flex-shrink: 0; }
+.aia-lib-prompt svg:hover { color: var(--color-warning); }
+
+.aia-export-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+.aia-export-opt { padding: var(--space-4); border: 1px solid var(--border-default); border-radius: var(--radius-md); cursor: pointer; text-align: center; transition: border-color var(--duration-base); }
+.aia-export-opt:hover { border-color: var(--border-primary); }
+.aia-export-opt.selected { border-color: var(--color-primary); background: var(--bg-active); }
+
+.aia-settings-row { display: flex; align-items: center; justify-content: space-between; padding: var(--space-3) 0; border-bottom: 1px solid var(--border-subtle); }
+.aia-settings-row:last-child { border-bottom: none; }
+.aia-settings-label { font-size: var(--text-sm); color: var(--text-primary); font-weight: var(--weight-medium); }
+.aia-settings-desc { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+.aia-switch { position: relative; width: 38px; height: 20px; flex-shrink: 0; }
+.aia-switch input { opacity: 0; width: 0; height: 0; }
+.aia-switch-track { position: absolute; inset: 0; background: var(--bg-overlay); border-radius: 999px; transition: background var(--duration-base); cursor: pointer; }
+.aia-switch-track::before { content: ''; position: absolute; width: 14px; height: 14px; left: 3px; top: 3px; background: var(--text-tertiary); border-radius: 50%; transition: transform var(--duration-base), background var(--duration-base); }
+.aia-switch input:checked + .aia-switch-track { background: var(--color-primary-glow); }
+.aia-switch input:checked + .aia-switch-track::before { transform: translateX(18px); background: var(--color-primary-light); }
+
+@media (max-width: 860px) {
+  .aia-layout { grid-template-columns: 1fr; }
+  .aia-sidebar { display: none; }
+}

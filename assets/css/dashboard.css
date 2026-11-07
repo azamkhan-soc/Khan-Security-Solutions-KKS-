@@ -1,0 +1,232 @@
+/* ==========================================================================
+   KHAN SECURITY SOLUTIONS ENTERPRISE
+   Dashboard — Executive SOC Command Center
+   Prefix: xc- (Executive Command) — verified unique across the whole project
+   ========================================================================== */
+
+.xc-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-bottom: var(--space-8);
+}
+
+.xc-icon-xs, .xc-icon-sm, .xc-icon-md { display: inline-block; vertical-align: -0.15em; flex-shrink: 0; }
+.xc-icon-xs { width: 13px; height: 13px; }
+.xc-icon-sm { width: 16px; height: 16px; }
+.xc-icon-md { width: 22px; height: 22px; }
+
+/* ── Color utility classes (map to design tokens) ───────────────────────── */
+.xc-c-primary { color: var(--color-primary); }
+.xc-c-accent  { color: var(--color-accent); }
+.xc-c-success { color: var(--color-success); }
+.xc-c-warning { color: var(--color-warning); }
+.xc-c-danger  { color: var(--color-danger); }
+.xc-c-info    { color: var(--color-info); }
+.xc-stat-icon.xc-c-primary { background: var(--color-primary-glow); }
+.xc-stat-icon.xc-c-accent  { background: var(--color-accent-glow); }
+.xc-stat-icon.xc-c-success { background: var(--color-success-bg); }
+.xc-stat-icon.xc-c-warning { background: var(--color-warning-bg); }
+.xc-stat-icon.xc-c-danger  { background: var(--color-danger-bg); }
+.xc-stat-icon.xc-c-info    { background: var(--color-info-bg); }
+.xc-gauge-fill.xc-c-primary { background: var(--color-primary); }
+.xc-gauge-fill.xc-c-accent  { background: var(--color-accent); }
+.xc-gauge-fill.xc-c-success { background: var(--color-success); }
+.xc-gauge-fill.xc-c-warning { background: var(--color-warning); }
+
+/* ── Hero / Top section ───────────────────────────────────────────────────── */
+.xc-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--bg-elevated), var(--bg-surface));
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-md);
+}
+.xc-hero-eyebrow {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-xs); font-weight: var(--weight-semibold);
+  color: var(--color-primary-light); letter-spacing: 0.04em; text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+.xc-hero-title { font-size: var(--text-4xl); font-weight: var(--weight-bold); color: var(--text-primary); margin: 0; }
+.xc-hero-sub { color: var(--text-secondary); margin-top: var(--space-1); font-size: var(--text-base); }
+.xc-hero-meta { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+.xc-hero-meta-item { display: flex; flex-direction: column; gap: var(--space-1); min-width: 96px; }
+.xc-hero-meta-label { font-size: var(--text-xs); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.03em; }
+.xc-hero-meta-value { font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.xc-badge-offline, .xc-badge-ok {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  padding: 2px var(--space-2); border-radius: var(--radius-full); font-size: var(--text-xs);
+}
+.xc-badge-offline { color: var(--color-warning-light); background: var(--color-warning-bg); }
+.xc-badge-ok { color: var(--color-success-light); background: var(--color-success-bg); }
+
+/* ── Section scaffolding ─────────────────────────────────────────────────── */
+.xc-section { display: flex; flex-direction: column; gap: var(--space-4); }
+.xc-section-head { display: flex; align-items: baseline; gap: var(--space-3); }
+.xc-section-title { font-size: var(--text-xl); font-weight: var(--weight-semibold); color: var(--text-primary); margin: 0; }
+.xc-section-sub { font-size: var(--text-sm); color: var(--text-tertiary); }
+
+/* ── Stat cards ──────────────────────────────────────────────────────────── */
+.xc-stat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-4); }
+.xc-stat-grid-8 { grid-template-columns: repeat(4, 1fr); }
+.xc-stat-grid-7 { grid-template-columns: repeat(4, 1fr); }
+
+.xc-stat-card {
+  display: flex; align-items: center; gap: var(--space-3);
+  background: var(--bg-surface); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg); padding: var(--space-4);
+  transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+.xc-stat-card:hover { border-color: var(--border-default); transform: translateY(-1px); }
+.xc-stat-icon {
+  width: 42px; height: 42px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.xc-stat-icon svg { width: 20px; height: 20px; }
+.xc-stat-value { font-size: var(--text-2xl); font-weight: var(--weight-bold); color: var(--text-primary); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.xc-stat-label { font-size: var(--text-sm); color: var(--text-secondary); margin-top: 2px; }
+.xc-stat-sub { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 1px; }
+
+/* ── Widgets (Threat Intel row) ──────────────────────────────────────────── */
+.xc-widget-row { display: grid; grid-template-columns: 2fr repeat(6, 1fr); gap: var(--space-4); }
+.xc-widget {
+  background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+  padding: var(--space-4); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: var(--space-1);
+}
+.xc-widget-wide { align-items: flex-start; text-align: left; grid-column: span 1; }
+.xc-widget-title { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--text-secondary); font-weight: var(--weight-medium); }
+.xc-widget-highlight { font-size: var(--text-lg); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.xc-widget-note { font-size: var(--text-xs); color: var(--text-tertiary); }
+.xc-widget-num { font-size: var(--text-2xl); font-weight: var(--weight-bold); color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.xc-widget-label { font-size: var(--text-xs); color: var(--text-tertiary); }
+
+/* ── Two-column rows (activity/quick actions, reports/insights) ────────────── */
+.xc-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); align-items: start; }
+
+.xc-panel {
+  background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+  padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3);
+}
+.xc-panel-head { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.xc-panel-tag { font-size: var(--text-xs); font-weight: var(--weight-normal); color: var(--text-tertiary); background: var(--bg-elevated); padding: 2px var(--space-2); border-radius: var(--radius-full); margin-left: auto; }
+.xc-panel-footer-btn {
+  align-self: flex-start; display: flex; align-items: center; gap: var(--space-1);
+  background: none; border: none; color: var(--text-link); font-size: var(--text-sm); cursor: pointer; padding: var(--space-1) 0;
+}
+.xc-panel-footer-btn:hover { color: var(--text-link-hover); text-decoration: underline; }
+
+/* ── Live activity feed ──────────────────────────────────────────────────── */
+.xc-activity-feed { display: flex; flex-direction: column; gap: var(--space-2); max-height: 320px; overflow-y: auto; }
+.xc-activity-item {
+  display: flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
+  background: var(--bg-elevated); font-size: var(--text-sm); color: var(--text-secondary);
+  animation: xc-fade-in var(--duration-slow) var(--ease-out);
+}
+.xc-activity-item svg { flex-shrink: 0; }
+.xc-activity-item.xc-sev-critical svg, .xc-activity-item.xc-sev-high svg { color: var(--color-danger); }
+.xc-activity-item.xc-sev-medium svg { color: var(--color-warning); }
+.xc-activity-item.xc-sev-info svg { color: var(--color-info); }
+.xc-activity-text { flex: 1; }
+.xc-activity-time { font-size: var(--text-xs); color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+@keyframes xc-fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── Quick actions ────────────────────────────────────────────────────────── */
+.xc-quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+.xc-quick-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2);
+  background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-2); color: var(--text-secondary); font-size: var(--text-xs); text-align: center;
+  cursor: pointer; transition: all var(--duration-base) var(--ease-out);
+}
+.xc-quick-btn:hover { border-color: var(--color-primary); color: var(--text-primary); background: var(--bg-active); transform: translateY(-1px); }
+.xc-quick-btn svg { color: var(--color-primary-light); }
+
+/* ── Lists (reports / insights) ─────────────────────────────────────────── */
+.xc-list { display: flex; flex-direction: column; gap: var(--space-2); max-height: 280px; overflow-y: auto; }
+.xc-list-row, .xc-insight-row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-2); border-radius: var(--radius-md); background: var(--bg-elevated); }
+.xc-list-main { flex: 1; min-width: 0; }
+.xc-list-title { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.xc-list-sub { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 1px; }
+.xc-chip { font-size: var(--text-xs); color: var(--text-secondary); background: var(--bg-overlay); padding: 2px var(--space-2); border-radius: var(--radius-full); flex-shrink: 0; }
+.xc-empty { padding: var(--space-4); text-align: center; color: var(--text-tertiary); font-size: var(--text-sm); }
+
+/* ── Severity badges (shared) ─────────────────────────────────────────────── */
+.xc-sev { font-size: var(--text-xs); font-weight: var(--weight-semibold); text-transform: capitalize; padding: 2px var(--space-2); border-radius: var(--radius-full); flex-shrink: 0; }
+.xc-sev-critical { color: var(--severity-critical); background: var(--color-danger-bg); }
+.xc-sev-high     { color: var(--severity-high);     background: var(--color-warning-bg); }
+.xc-sev-medium   { color: var(--severity-medium);   background: rgba(202, 138, 4, 0.12); }
+.xc-sev-low      { color: var(--severity-low);      background: var(--color-success-bg); }
+.xc-sev-info     { color: var(--severity-info);     background: var(--color-info-bg); }
+
+/* ── Recent Incidents table ──────────────────────────────────────────────── */
+.xc-table-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+.xc-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.xc-table thead th {
+  text-align: left; padding: var(--space-3) var(--space-4); background: var(--bg-elevated);
+  color: var(--text-tertiary); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--border-default);
+}
+.xc-table tbody td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); }
+.xc-table tbody tr:last-child td { border-bottom: none; }
+.xc-table tbody tr:hover td { background: var(--bg-hover); }
+.xc-td-title { color: var(--text-primary); font-weight: var(--weight-medium); }
+.xc-nowrap { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.xc-link-btn { display: inline-flex; align-items: center; gap: var(--space-1); background: none; border: none; color: var(--text-link); font-size: var(--text-sm); cursor: pointer; }
+.xc-link-btn:hover { color: var(--text-link-hover); }
+
+/* ── Platform health ──────────────────────────────────────────────────────── */
+.xc-health-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-6); background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); }
+.xc-health-gauges { display: flex; flex-direction: column; gap: var(--space-4); }
+.xc-gauge-top { display: flex; justify-content: space-between; font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-1); }
+.xc-gauge-track { height: 8px; border-radius: var(--radius-full); background: var(--bg-elevated); overflow: hidden; }
+.xc-gauge-fill { height: 100%; border-radius: var(--radius-full); transition: width var(--duration-slower) var(--ease-out); }
+.xc-health-facts { display: flex; flex-direction: column; gap: var(--space-3); justify-content: center; }
+.xc-health-fact { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--text-secondary); }
+.xc-health-fact strong { margin-left: auto; color: var(--text-primary); font-weight: var(--weight-semibold); }
+
+/* ── Charts ───────────────────────────────────────────────────────────────── */
+.xc-chart-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.xc-chart-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-4); }
+.xc-chart-title { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-secondary); margin-bottom: var(--space-2); }
+.xc-chart-card svg { width: 100%; height: auto; display: block; }
+
+/* ── Footer note ──────────────────────────────────────────────────────────── */
+.xc-footer-note {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-xs); color: var(--text-tertiary);
+  padding: var(--space-3) var(--space-4); border-top: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .xc-stat-grid { grid-template-columns: repeat(3, 1fr); }
+  .xc-stat-grid-8, .xc-stat-grid-7 { grid-template-columns: repeat(3, 1fr); }
+  .xc-widget-row { grid-template-columns: repeat(4, 1fr); }
+  .xc-widget-wide { grid-column: span 4; }
+  .xc-chart-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .xc-row-2 { grid-template-columns: 1fr; }
+  .xc-quick-grid { grid-template-columns: repeat(2, 1fr); }
+  .xc-health-grid { grid-template-columns: 1fr; }
+  .xc-hero { flex-direction: column; }
+}
+
+@media (max-width: 640px) {
+  .xc-stat-grid, .xc-stat-grid-8, .xc-stat-grid-7 { grid-template-columns: repeat(2, 1fr); }
+  .xc-widget-row { grid-template-columns: repeat(2, 1fr); }
+  .xc-widget-wide { grid-column: span 2; }
+  .xc-chart-grid { grid-template-columns: 1fr; }
+  .xc-hero-title { font-size: var(--text-3xl); }
+  .xc-hero-meta { gap: var(--space-4); }
+}

@@ -1,0 +1,373 @@
+/* ==========================================================================
+   KHAN SECURITY SOLUTIONS ENTERPRISE
+   Design System – CSS Variables & Tokens
+   Version: 1.0.0
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ROOT – DEFAULT DARK THEME
+   All themes override these same variables. No hardcoded colors anywhere else.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand Identity */
+  --brand-name: "Khan Security Solutions";
+  --app-version: "1.0.0";
+
+  /* ── Core Palette ── */
+  --color-primary:        #2563eb;   /* Blue – primary actions */
+  --color-primary-light:  #3b82f6;
+  --color-primary-dark:   #1d4ed8;
+  --color-primary-glow:   rgba(37, 99, 235, 0.25);
+
+  --color-accent:         #7c3aed;   /* Purple – secondary accent */
+  --color-accent-light:   #8b5cf6;
+  --color-accent-glow:    rgba(124, 58, 237, 0.20);
+
+  --color-success:        #10b981;   /* Green – healthy, resolved */
+  --color-success-light:  #34d399;
+  --color-success-bg:     rgba(16, 185, 129, 0.12);
+
+  --color-warning:        #f59e0b;   /* Amber – caution, medium risk */
+  --color-warning-light:  #fbbf24;
+  --color-warning-bg:     rgba(245, 158, 11, 0.12);
+
+  --color-danger:         #ef4444;   /* Red – critical, high severity */
+  --color-danger-light:   #f87171;
+  --color-danger-bg:      rgba(239, 68, 68, 0.12);
+
+  --color-info:           #06b6d4;   /* Cyan – informational */
+  --color-info-light:     #22d3ee;
+  --color-info-bg:        rgba(6, 182, 212, 0.12);
+
+  /* ── Background Layers ── */
+  --bg-base:              #0a0c10;   /* Deepest background */
+  --bg-surface:           #0f1117;   /* Card/panel background */
+  --bg-elevated:          #161b27;   /* Elevated elements */
+  --bg-overlay:           #1e2436;   /* Hover states, dropdowns */
+  --bg-hover:             rgba(255, 255, 255, 0.04);
+  --bg-active:            rgba(37, 99, 235, 0.12);
+  --bg-glass:             rgba(15, 17, 23, 0.80);
+
+  /* ── Text Colors ── */
+  --text-primary:         #f1f5f9;
+  --text-secondary:       #94a3b8;
+  --text-tertiary:        #64748b;
+  --text-disabled:        #334155;
+  --text-inverse:         #0f1117;
+  --text-link:            #60a5fa;
+  --text-link-hover:      #93c5fd;
+
+  /* ── Border Colors ── */
+  --border-subtle:        rgba(255, 255, 255, 0.06);
+  --border-default:       rgba(255, 255, 255, 0.10);
+  --border-strong:        rgba(255, 255, 255, 0.18);
+  --border-focus:         var(--color-primary);
+  --border-primary:       rgba(37, 99, 235, 0.40);
+
+  /* ── Sidebar ── */
+  --sidebar-width:        260px;
+  --sidebar-collapsed:    64px;
+  --sidebar-bg:           #0d1018;
+  --sidebar-border:       rgba(255, 255, 255, 0.07);
+  --sidebar-item-hover:   rgba(255, 255, 255, 0.05);
+  --sidebar-item-active:  rgba(37, 99, 235, 0.15);
+  --sidebar-item-active-border: var(--color-primary);
+
+  /* ── Top Bar ── */
+  --topbar-height:        56px;
+  --topbar-bg:            rgba(10, 12, 16, 0.95);
+  --topbar-border:        rgba(255, 255, 255, 0.07);
+
+  /* ── Typography ── */
+  --font-sans:            'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:            'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --text-xs:    0.6875rem;   /* 11px */
+  --text-sm:    0.8125rem;   /* 13px */
+  --text-base:  0.9375rem;   /* 15px */
+  --text-md:    1rem;        /* 16px */
+  --text-lg:    1.125rem;    /* 18px */
+  --text-xl:    1.25rem;     /* 20px */
+  --text-2xl:   1.5rem;      /* 24px */
+  --text-3xl:   1.875rem;    /* 30px */
+  --text-4xl:   2.25rem;     /* 36px */
+  --text-5xl:   3rem;        /* 48px */
+
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  --leading-tight:  1.25;
+  --leading-normal: 1.5;
+  --leading-loose:  1.75;
+
+  /* ── Spacing Scale ── */
+  --space-1:   0.25rem;   /* 4px */
+  --space-2:   0.5rem;    /* 8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+
+  /* ── Border Radius ── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  20px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.6);
+  --shadow-xl:  0 16px 48px rgba(0,0,0,0.7);
+  --shadow-primary: 0 0 20px rgba(37, 99, 235, 0.3);
+  --shadow-glow:    0 0 40px rgba(37, 99, 235, 0.15);
+
+  /* ── Transitions ── */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:    cubic-bezier(0.4, 0, 1, 1);
+  --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:   120ms;
+  --duration-base:   200ms;
+  --duration-slow:   350ms;
+  --duration-slower: 500ms;
+
+  /* ── Z-Index Scale ── */
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+
+  /* ── Severity Colors (SOC specific) ── */
+  --severity-critical: #dc2626;
+  --severity-high:     #ea580c;
+  --severity-medium:   #ca8a04;
+  --severity-low:      #16a34a;
+  --severity-info:     #0284c7;
+  --severity-none:     #475569;
+
+  /* ── Status Colors ── */
+  --status-online:      #10b981;
+  --status-offline:     #ef4444;
+  --status-idle:        #f59e0b;
+  --status-unknown:     #64748b;
+  --status-maintenance: #7c3aed;
+
+  /* ── Chart Colors (consistent across all charts) ── */
+  --chart-1: #2563eb;
+  --chart-2: #7c3aed;
+  --chart-3: #06b6d4;
+  --chart-4: #10b981;
+  --chart-5: #f59e0b;
+  --chart-6: #ef4444;
+  --chart-7: #8b5cf6;
+  --chart-8: #0ea5e9;
+
+  /* ── Glassmorphism ── */
+  --glass-bg:     rgba(15, 17, 23, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur:   12px;
+
+  /* ── Scrollbar ── */
+  --scrollbar-width: 6px;
+  --scrollbar-track: rgba(255,255,255,0.03);
+  --scrollbar-thumb: rgba(255,255,255,0.12);
+  --scrollbar-thumb-hover: rgba(255,255,255,0.22);
+}
+
+/* ==========================================================================
+   LIGHT THEME
+   ========================================================================== */
+[data-theme="light"] {
+  --bg-base:        #f8fafc;
+  --bg-surface:     #ffffff;
+  --bg-elevated:    #f1f5f9;
+  --bg-overlay:     #e2e8f0;
+  --bg-hover:       rgba(0, 0, 0, 0.04);
+  --bg-active:      rgba(37, 99, 235, 0.08);
+  --bg-glass:       rgba(255, 255, 255, 0.85);
+
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary:  #94a3b8;
+  --text-disabled:  #cbd5e1;
+  --text-inverse:   #f8fafc;
+
+  --border-subtle:  rgba(0, 0, 0, 0.05);
+  --border-default: rgba(0, 0, 0, 0.10);
+  --border-strong:  rgba(0, 0, 0, 0.18);
+
+  --sidebar-bg:     #0d1018;   /* Keep sidebar dark even in light mode */
+  --topbar-bg:      rgba(248, 250, 252, 0.95);
+  --topbar-border:  rgba(0, 0, 0, 0.08);
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.12);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.15);
+
+  --glass-bg:     rgba(255, 255, 255, 0.80);
+  --glass-border: rgba(0, 0, 0, 0.08);
+
+  --scrollbar-track: rgba(0,0,0,0.04);
+  --scrollbar-thumb: rgba(0,0,0,0.15);
+  --scrollbar-thumb-hover: rgba(0,0,0,0.25);
+}
+
+/* ==========================================================================
+   CYBER THEME – Neon green on near-black; terminal aesthetic
+   ========================================================================== */
+[data-theme="cyber"] {
+  --color-primary:       #00ff88;
+  --color-primary-light: #39ffaa;
+  --color-primary-dark:  #00cc6a;
+  --color-primary-glow:  rgba(0, 255, 136, 0.20);
+
+  --color-accent:        #00d4ff;
+  --color-accent-light:  #33dcff;
+  --color-accent-glow:   rgba(0, 212, 255, 0.15);
+
+  --bg-base:     #060808;
+  --bg-surface:  #0a0e0e;
+  --bg-elevated: #0f1515;
+  --bg-overlay:  #152020;
+
+  --text-primary:   #e0fff0;
+  --text-secondary: #7aada0;
+  --text-link:      #00ff88;
+
+  --border-subtle:  rgba(0, 255, 136, 0.06);
+  --border-default: rgba(0, 255, 136, 0.12);
+  --border-primary: rgba(0, 255, 136, 0.35);
+
+  --sidebar-bg:    #060a0a;
+  --sidebar-item-active: rgba(0, 255, 136, 0.10);
+  --sidebar-item-active-border: #00ff88;
+
+  --shadow-primary: 0 0 20px rgba(0, 255, 136, 0.25);
+  --shadow-glow:    0 0 60px rgba(0, 255, 136, 0.08);
+
+  --chart-1: #00ff88;
+  --chart-2: #00d4ff;
+  --chart-3: #ff6b35;
+  --chart-4: #ffd700;
+  --chart-5: #ff3366;
+
+  --glass-bg:     rgba(10, 14, 14, 0.85);
+  --glass-border: rgba(0, 255, 136, 0.10);
+}
+
+/* ==========================================================================
+   BLUE THEME – Steel blue enterprise
+   ========================================================================== */
+[data-theme="blue"] {
+  --color-primary:       #0ea5e9;
+  --color-primary-light: #38bdf8;
+  --color-primary-dark:  #0284c7;
+  --color-primary-glow:  rgba(14, 165, 233, 0.20);
+
+  --color-accent:        #6366f1;
+  --color-accent-light:  #818cf8;
+
+  --bg-base:     #020c18;
+  --bg-surface:  #061020;
+  --bg-elevated: #0a1628;
+  --bg-overlay:  #0f2040;
+
+  --text-primary:   #e0f2fe;
+  --text-secondary: #7cb9d8;
+
+  --border-subtle:  rgba(14, 165, 233, 0.06);
+  --border-default: rgba(14, 165, 233, 0.12);
+  --border-primary: rgba(14, 165, 233, 0.35);
+
+  --sidebar-bg: #030e1a;
+  --sidebar-item-active: rgba(14, 165, 233, 0.12);
+  --sidebar-item-active-border: #0ea5e9;
+
+  --shadow-primary: 0 0 20px rgba(14, 165, 233, 0.25);
+
+  --glass-bg:     rgba(6, 16, 32, 0.85);
+  --glass-border: rgba(14, 165, 233, 0.10);
+}
+
+/* ==========================================================================
+   GREEN THEME – Security operations center
+   ========================================================================== */
+[data-theme="green"] {
+  --color-primary:       #22c55e;
+  --color-primary-light: #4ade80;
+  --color-primary-dark:  #16a34a;
+  --color-primary-glow:  rgba(34, 197, 94, 0.20);
+
+  --color-accent:        #14b8a6;
+  --color-accent-light:  #2dd4bf;
+
+  --bg-base:     #020d06;
+  --bg-surface:  #061409;
+  --bg-elevated: #0b1e0f;
+  --bg-overlay:  #112818;
+
+  --text-primary:   #dcfce7;
+  --text-secondary: #74b38a;
+
+  --border-subtle:  rgba(34, 197, 94, 0.06);
+  --border-default: rgba(34, 197, 94, 0.12);
+  --border-primary: rgba(34, 197, 94, 0.35);
+
+  --sidebar-bg: #030c06;
+  --sidebar-item-active: rgba(34, 197, 94, 0.10);
+  --sidebar-item-active-border: #22c55e;
+
+  --shadow-primary: 0 0 20px rgba(34, 197, 94, 0.22);
+
+  --glass-bg:     rgba(6, 20, 9, 0.85);
+  --glass-border: rgba(34, 197, 94, 0.10);
+}
+
+/* ==========================================================================
+   HIGH CONTRAST THEME – Accessibility
+   ========================================================================== */
+[data-theme="high-contrast"] {
+  --color-primary:       #ffffff;
+  --color-primary-light: #ffffff;
+  --color-primary-glow:  rgba(255,255,255,0.15);
+
+  --color-accent:        #ffff00;
+  --color-success:       #00ff00;
+  --color-warning:       #ffaa00;
+  --color-danger:        #ff0000;
+
+  --bg-base:     #000000;
+  --bg-surface:  #000000;
+  --bg-elevated: #111111;
+  --bg-overlay:  #222222;
+
+  --text-primary:   #ffffff;
+  --text-secondary: #cccccc;
+  --text-tertiary:  #aaaaaa;
+
+  --border-subtle:  rgba(255,255,255,0.25);
+  --border-default: rgba(255,255,255,0.50);
+  --border-strong:  #ffffff;
+  --border-primary: #ffffff;
+
+  --sidebar-bg: #000000;
+  --sidebar-border: rgba(255,255,255,0.30);
+  --sidebar-item-active: rgba(255,255,255,0.12);
+  --sidebar-item-active-border: #ffffff;
+
+  --glass-bg:     #000000;
+  --glass-border: rgba(255,255,255,0.40);
+}

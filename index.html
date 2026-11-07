@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Khan Security Solutions Enterprise — Offline cybersecurity platform: SOC dashboard, SIEM log analysis, malware analysis, threat intelligence, DFIR toolkit, vulnerability management, and more." />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="author" content="Mohammad Azam Khan">
+  <meta name="application-name" content="Khan Security Solutions Enterprise">
+  <meta name="theme-color" content="#0f172a">
+  <title>Khan Security Solutions Enterprise</title>
+
+  <!-- Favicon (inline SVG, no external request, fully offline) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Crect width='24' height='24' rx='6' fill='%232563eb'/%3E%3Cpath d='M12 4 L19 7 V12 C19 16 16 19.5 12 21 C8 19.5 5 16 5 12 V7 Z' fill='%23ffffff' fill-opacity='0.95'/%3E%3C/svg%3E" />
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       STYLESHEETS
+       Load order matters: variables (tokens) → layout (components/shell)
+       ════════════════════════════════════════════════════════════════════ -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/dashboard.css" />
+  <link rel="stylesheet" href="assets/css/portfolio.css" />
+  <link rel="stylesheet" href="assets/css/company.css" />
+  <link rel="stylesheet" href="assets/css/log-analyzer.css" />
+  <link rel="stylesheet" href="assets/css/malware.css" />
+  <link rel="stylesheet" href="assets/css/threat-intel.css" />
+  <link rel="stylesheet" href="assets/css/network-tools.css" />
+  <link rel="stylesheet" href="assets/css/dfir.css" />
+  <link rel="stylesheet" href="assets/css/vuln-manager.css" />
+  <link rel="stylesheet" href="assets/css/asset-inventory.css" />
+  <link rel="stylesheet" href="assets/css/incident-response.css" />
+  <link rel="stylesheet" href="assets/css/phishing-analyzer.css" />
+  <link rel="stylesheet" href="assets/css/ioc-manager.css" />
+  <link rel="stylesheet" href="assets/css/case-manager.css" />
+  <link rel="stylesheet" href="assets/css/password-tools.css" />
+  <link rel="stylesheet" href="assets/css/reports.css" />
+  <link rel="stylesheet" href="assets/css/help.css" />
+  <link rel="stylesheet" href="assets/css/ai-assistant.css" />
+
+  <!-- Inline critical loading-screen styles so it renders before external CSS
+       finishes parsing on very slow/offline storage media -->
+  <style>
+    html, body { background: #0a0c10; margin: 0; padding: 0; }
+    #app-loading {
+      position: fixed; inset: 0; background: #0a0c10;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 24px; z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       LOADING SCREEN
+       Shown until app.js finishes bootstrapping core systems.
+       ══════════════════════════════════════════════════════════════════════ -->
+  <div id="app-loading">
+    <div class="loading-logo">KS</div>
+    <div class="loading-text">INITIALIZING SECURE ENVIRONMENT</div>
+    <div class="loading-bar">
+      <div class="loading-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       APP SHELL
+       app.js injects sidebar / topbar / page views / overlays into #app-root
+       ══════════════════════════════════════════════════════════════════════ -->
+  <div class="app-shell" id="app-shell">
+    <div id="app-root" style="display: contents;"></div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       NO-SCRIPT FALLBACK
+       ════════════════════════════════════════════════════════════════════ -->
+  <noscript>
+    <div style="position:fixed;inset:0;background:#0a0c10;color:#f1f5f9;
+                display:flex;align-items:center;justify-content:center;
+                font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+                text-align:center;padding:40px;">
+      <div>
+        <h1 style="font-size:24px;margin-bottom:12px;">JavaScript Required</h1>
+        <p style="color:#94a3b8;max-width:480px;">
+          Khan Security Solutions Enterprise is a fully offline, client-side
+          application that requires JavaScript to run. Please enable
+          JavaScript in your browser settings and reload this page.
+        </p>
+      </div>
+    </div>
+  </noscript>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       CORE SCRIPTS
+       Strict load order — each module attaches itself to `window` and
+       later modules depend on earlier ones being defined first.
+
+       1. storage.js       – IndexedDB + localStorage (no dependencies)
+       2. theme.js          – depends on StorageManager
+       3. notifications.js  – depends on StorageManager
+       4. router.js          – depends on DOM only
+       5. search.js          – depends on Router (window.Router must exist first)
+       6. portfolio-data.js – pure data, no dependencies
+       7. portfolio.js      – depends on Router, SearchEngine, NotificationManager, StorageManager
+       8. app.js            – depends on all above; bootstraps shell, then calls Router.init()
+       ════════════════════════════════════════════════════════════════════ -->
+  <script src="assets/js/core/storage.js"></script>
+  <script src="assets/js/core/theme.js"></script>
+  <script src="assets/js/core/notifications.js"></script>
+  <script src="assets/js/core/router.js"></script>
+  <script src="assets/js/core/search.js"></script>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       FEATURE MODULES
+       Milestone 2 adds the Portfolio module + its data file.
+       Remaining modules stay commented out until their milestone arrives.
+       ════════════════════════════════════════════════════════════════════ -->
+  <script src="assets/data/portfolio-data.js"></script>
+  <script src="assets/js/modules/portfolio.js"></script>
+  <script src="assets/data/company-data.js"></script>
+  <script src="assets/js/modules/company.js"></script>
+  <script src="assets/data/sample-logs.js"></script>
+  <script src="assets/js/modules/log-analyzer.js"></script>
+  <script src="assets/data/sample-malware.js"></script>
+  <script src="assets/js/modules/malware.js"></script>
+  <script src="assets/data/threat-intel-data.js"></script>
+  <script src="assets/js/modules/threat-intel.js"></script>
+  <script src="assets/data/network-data.js"></script>
+  <script src="assets/js/modules/network-tools.js"></script>
+  <script src="assets/data/dfir-data.js"></script>
+  <script src="assets/js/modules/dfir.js"></script>
+  <script src="assets/data/vuln-data.js"></script>
+  <script src="assets/js/modules/vuln-manager.js"></script>
+  <script src="assets/data/assets-data.js"></script>
+  <script src="assets/js/modules/asset-inventory.js"></script>
+  <script src="assets/data/incidents-data.js"></script>
+  <script src="assets/js/modules/incident-response.js"></script>
+  <script src="assets/data/phishing-data.js"></script>
+  <script src="assets/js/modules/phishing-analyzer.js"></script>
+  <script src="assets/data/ioc-data.js"></script>
+  <script src="assets/js/modules/ioc-manager.js"></script>
+  <script src="assets/data/cases-data.js"></script>
+  <script src="assets/js/modules/case-manager.js"></script>
+  <script src="assets/data/password-data.js"></script>
+  <script src="assets/js/modules/password-tools.js"></script>
+  <script src="assets/data/reports-data.js"></script>
+  <script src="assets/js/modules/reports.js"></script>
+  <script src="assets/data/help-data.js"></script>
+  <script src="assets/js/modules/help.js"></script>
+  <script src="assets/data/ai-data.js"></script>
+  <script src="assets/js/modules/ai-assistant.js"></script>
+  <script src="assets/data/dashboard-data.js"></script>
+  <script src="assets/js/modules/dashboard.js"></script>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       APPLICATION BOOTSTRAP
+       Must load last — wires sidebar/topbar, registers routes, starts router.
+       ════════════════════════════════════════════════════════════════════ -->
+  <script src="assets/js/core/app.js"></script>
+
+</body>
+</html>
